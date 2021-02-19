@@ -1,8 +1,45 @@
 
 export const initialState = {
+  smurfs: [],
+  isLoading: false,
+  err: ''
+
 }
 
-const reducer = ()=>{
+const reducer = (state = initialState, action)=>{
+  switch(action.payload){
+    case('START_SMURF_FETCH'):
+      return({
+        ...state,
+        isLoading: true
+      })
+    case('SMURF_API_FETCH'):
+      return({
+        ...state,
+        isLoading: false,
+        smurf: action.payload
+      })
+    case('FAILED_SMURF_API'):
+      return({
+        ...state,
+        err: action.payload
+      })
+    case('ADDING_SMURF'):
+      return({
+        ...state,
+        smurf: [...state.smurf, action.payload ]
+      })
+    
+    case('SET_ERR'):
+      return({
+        ...state,
+        isLoading: true,
+        err: 'PLease fill out forum'
+      })
+
+  default:
+    return state
+  }
 }
 
 export default reducer;
