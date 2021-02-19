@@ -18,7 +18,7 @@ export const fetchSmurfs = () => {
 
     axios.get('http://localhost:3333/smurfs')
       .then(res => {
-        console.log(res, 'fetch')
+      
         dispatch({type:SMURF_API_FETCH, payload: res.data})
       })
       .catch(err => {
@@ -30,7 +30,7 @@ export const fetchSmurfs = () => {
 export const newSmurf = (smurf) => dispatch => {
   axios.post('http://localhost:3333/smurfs', smurf)
     .then(res => {
-      console.log(res.data , 'newsmurf')
+      
       dispatch({type: ADDING_SMURF, payload: res.data})
     })
     .catch(err => {
